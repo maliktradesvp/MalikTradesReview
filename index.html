@@ -94,6 +94,8 @@ textarea{resize:vertical;min-height:130px;line-height:1.55}
 .tgl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mut);margin:0 0 8px}
 .tgl+.types{margin-bottom:14px}
 .types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#f-type-adv{grid-template-columns:repeat(4,1fr)}
+.types .type{flex-direction:column;text-align:center;padding:13px 6px 12px;gap:8px}
 .type{position:relative;display:flex;align-items:center;gap:11px;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--teal);font:700 15px/1.2 var(--body);cursor:pointer;text-align:left;transition:border-color .15s,transform .15s,box-shadow .15s}
 .type:hover{border-color:#D5C8B2;transform:translateY(-1px);box-shadow:0 8px 18px -14px rgba(30,50,55,.5)}
 .type .e{font-size:24px;line-height:1;width:40px;height:40px;border-radius:11px;background:var(--tealsoft);display:grid;place-items:center;flex:none}
@@ -200,7 +202,7 @@ textarea{resize:vertical;min-height:130px;line-height:1.55}
 @media (max-width:1280px){.lay{grid-template-columns:minmax(0,1fr) 400px}}
 @media (max-width:1100px){.lay{grid-template-columns:1fr}.preview{position:static;max-width:620px}.h-grid{grid-template-columns:1fr}.pull{max-width:520px}}
 @media (max-width:860px){main.tr{padding:18px 16px 96px}.hero{padding:18px 18px 22px;border-radius:20px}.hero h1{font-size:40px}.toast{bottom:90px}}
-@media (max-width:640px){form.panel{padding:2px 16px;border-radius:18px}.row2,.rr{grid-template-columns:1fr}.types{grid-template-columns:repeat(3,1fr);gap:8px}.type{flex-direction:column;text-align:center;padding:12px 6px 11px;font-size:13.5px;gap:7px}.type .e{width:38px;height:38px;font-size:22px}.cgrid{grid-template-columns:1fr;gap:4px}.cgrid .chips{margin-bottom:8px}.shot{grid-template-columns:1fr}.drop{height:150px}.h-act .hbtn{display:none}.sh .aside{display:none}.step{font-size:12.5px}}
+@media (max-width:640px){form.panel{padding:2px 16px;border-radius:18px}.row2,.rr{grid-template-columns:1fr}.types,#f-type-adv{grid-template-columns:repeat(3,1fr);gap:8px}#f-type-adv{grid-template-columns:repeat(4,1fr);gap:6px}#f-type-adv .type{font-size:12.5px;padding:11px 3px 10px}.type{flex-direction:column;text-align:center;padding:12px 6px 11px;font-size:13.5px;gap:7px}.type .e{width:38px;height:38px;font-size:22px}.cgrid{grid-template-columns:1fr;gap:4px}.cgrid .chips{margin-bottom:8px}.shot{grid-template-columns:1fr}.drop{height:150px}.h-act .hbtn{display:none}.sh .aside{display:none}.step{font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -398,7 +400,7 @@ let lastShot = null;
 const starsOf = () => Math.min(4, state.conf.length);
 
 /* ---------- setups ---------- */
-const TYPES=[["The Snap","🫰","snap",0],["The Flip","🔄","flip",0],["The Magnet","🧲","magnet",0],["The Anchor","⚓","anchor",1],["The Wall","🧱","wall",1],["The Whip","⚡","whip",1]];
+const TYPES=[["The Snap","🫰","snap",0],["The Flip","🔄","flip",0],["The Magnet","🧲","magnet",0],["The Anchor","⚓","anchor",1],["The Wall","🧱","wall",1],["The Whip","⚡","whip",1],["The Guard","💂","guard",1]];
 TYPES.forEach(([name,e,id,adv])=>{
   const b=document.createElement('button'); b.type='button'; b.className='type'; b.dataset.v=name;
   b.setAttribute('role','radio'); b.innerHTML='<span class="e">'+e+'</span><span>'+name+'</span>';
@@ -499,7 +501,7 @@ drop.addEventListener('paste',e=>{ if(!handlePaste(e)){ e.preventDefault(); say(
 document.addEventListener('paste',e=>{ if(e.target===drop) return; handlePaste(e); });
 
 /* ---------- from the journal ---------- */
-const JSET = { snap:"The Snap", flip:"The Flip", magnet:"The Magnet", anchor:"The Anchor", wall:"The Wall", whip:"The Whip" };
+const JSET = { snap:"The Snap", flip:"The Flip", magnet:"The Magnet", anchor:"The Anchor", wall:"The Wall", whip:"The Whip", guard:"The Guard" };
 const PV = { NQ:20, MNQ:2, ES:50, MES:5, GC:100, MGC:10, CL:1000, MCL:100, OTHER:1 };
 const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 let jTrades=[], jMember='';
