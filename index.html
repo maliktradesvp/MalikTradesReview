@@ -6,113 +6,149 @@
 <meta name="description" content="Fill in your trade and export a MalikTrades review card for #trade-review.">
 <meta property="og:title" content="MalikTrades Trade Review">
 <meta property="og:description" content="Fill in your trade and export a review card for #trade-review.">
-<meta name="theme-color" content="#1F3D41">
-<title>MalikTrades Trade Review</title>
+<meta name="theme-color" content="#21414A">
+<title>Trade Review · MalikTrades</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Federo&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/mt-shell.css">
 <style>
-:root{
-  color-scheme: dark;
-  --sky:#3E7378;
-  --sky-deep:#1F3D41;
-  --sky-ink:#16292C;
-  --panel:#27494D;
-  --line:rgba(244,235,217,.16);
-  --cream:#F4EBD9;
-  --cream-dim:rgba(244,235,217,.66);
-  --cloud:#C9CCBF;
-  --win:#A9C9A4;
-  --loss:#E09A83;
-  --be:#D9C99B;
-  --star:#F1DDA8;
-  --display:"Federo","Marcellus","Georgia",serif;
-  --body:"Figtree","Segoe UI",system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-body{
-  background:var(--sky-ink);
-  background-image:radial-gradient(1200px 600px at 85% -10%, rgba(62,115,120,.55), transparent 60%),
-                   radial-gradient(900px 500px at -10% 110%, rgba(201,204,191,.10), transparent 60%);
-  color:var(--cream);font-family:var(--body);font-size:15px;line-height:1.5;
-  padding-inline:16px;padding-block:24px 48px;min-height:100%;
-}
-.app{max-width:1280px;margin:0 auto;display:grid;gap:24px}
-header.top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
-header.top h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);letter-spacing:.04em;margin:0;line-height:1.1;text-wrap:balance}
-header.top p{margin:4px 0 0;color:var(--cream-dim);max-width:60ch}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{font:600 14px/1 var(--body);border-radius:999px;padding:12px 18px;border:1px solid var(--line);background:transparent;color:var(--cream);cursor:pointer;transition:background .15s,border-color .15s}
-.btn:hover{border-color:var(--cream-dim)}
-.btn.primary{background:var(--cream);color:var(--sky-ink);border-color:var(--cream)}
-.btn.primary:hover{background:#fff}
-.btn:focus-visible,.chip:focus-visible,.star-btn:focus-visible,.seg button:focus-visible,input:focus-visible,textarea:focus-visible,.drop:focus-within{outline:2px solid var(--star);outline-offset:2px}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:0}
+main.tr{max-width:1260px;padding:40px 44px 70px}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
-.layout{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:28px;align-items:start}
-@media (max-width:900px){.layout{grid-template-columns:1fr}}
+/* ---------- hero ---------- */
+.hero{background:radial-gradient(120% 140% at 100% 0%,#2F5A60 0%,#21414A 45%,#1A333A 100%);color:#fff;border-radius:24px;padding:22px 28px 28px;box-shadow:0 24px 50px -30px rgba(20,40,45,.7);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(closest-side,rgba(226,194,122,.17),transparent);pointer-events:none}
+.h-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+.eyb{font-size:11px;letter-spacing:.24em;color:var(--gold2);font-weight:700;text-transform:uppercase}
+.h-act{display:flex;gap:8px;flex-wrap:wrap}
+.hbtn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#E9E2D3;font-weight:700;font-size:13.5px;border-radius:10px;padding:8px 13px;cursor:pointer;min-height:38px}
+.hbtn:hover{background:rgba(255,255,255,.15)}
+.gbtn{background:linear-gradient(180deg,#D1A54E,#B98C38);border:0;color:#fff;font-weight:700;font-size:14px;border-radius:10px;padding:9px 16px;min-height:38px;cursor:pointer;box-shadow:0 10px 20px -12px rgba(199,154,68,.9),inset 0 1px 0 rgba(255,255,255,.25);display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+.gbtn:hover{filter:brightness(1.06)}
+.gbtn:disabled{opacity:.6;cursor:default}
+.h-grid{display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:30px;align-items:end;position:relative;z-index:1}
+.hero h1{font-size:54px;line-height:1.02;margin:18px 0 10px;color:#fff}
+.hero p{margin:0;color:#C3D1CE;max-width:540px;font-size:15.5px;line-height:1.55}
+.hero p b{color:#fff}
+.steps{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:7px 13px 7px 8px;font-size:13.5px;color:#DCE5E2}
+.step i{font-style:normal;width:24px;height:24px;border-radius:50%;background:rgba(226,194,122,.18);color:var(--gold2);display:grid;place-items:center;font-weight:700;font-size:12px}
+.pull{background:linear-gradient(160deg,rgba(226,194,122,.13),rgba(255,255,255,.04));border:1px solid rgba(226,194,122,.32);border-radius:18px;padding:16px 18px}
+.pull .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);font-weight:700}
+.pull b{display:block;font-size:15.5px;margin:6px 0 11px}
+.pull select{width:100%;appearance:none;-webkit-appearance:none;background:#FFFCF6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232F5A60' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 13px center;color:var(--ink);border:0;border-radius:11px;padding:11px 36px 11px 13px;font:600 14.5px/1.3 var(--body);cursor:pointer;min-height:44px}
+.pull small{display:block;color:#9FB7B2;font-size:12.5px;margin-top:9px;line-height:1.45}
+.pull small a{color:var(--gold2);font-weight:700}
 
-/* ---------- form ---------- */
-form{display:grid;gap:18px;background:var(--sky-deep);border:1px solid var(--line);border-radius:18px;padding:20px}
-fieldset{border:0;margin:0;padding:0;display:grid;gap:8px;min-width:0}
-legend,.lab{font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);padding:0;margin-bottom:8px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-@media (max-width:420px){.row3{grid-template-columns:1fr 1fr}}
-.field{display:grid;gap:6px;min-width:0}
-.field label{font-size:12px;color:var(--cream-dim)}
-input[type=text],input[type=number],input[type=date],textarea{
-  width:100%;font:500 15px/1.4 var(--body);color:var(--cream);background:rgba(10,24,26,.45);
-  border:1px solid var(--line);border-radius:10px;padding:10px 12px;
-}
-input[type=number]{font-family:var(--mono)}
-textarea{resize:vertical;min-height:110px}
-.hint{font-size:12px;color:var(--cream-dim)}
-.seg{display:flex;width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.seg button{flex:1;font:600 14px/1 var(--body);padding:11px 6px;border:0;background:transparent;color:var(--cream-dim);cursor:pointer}
-.seg.inst button{font-family:var(--mono)}
-.seg.inst button[aria-checked=true]{background:var(--cream);color:var(--sky-ink)}
-.seg button[aria-pressed=true][data-v=Long]{background:var(--win);color:var(--sky-ink)}
-.seg button[aria-pressed=true][data-v=Short]{background:var(--loss);color:var(--sky-ink)}
-.stars{display:flex;gap:4px;align-items:center}
-.star-btn{font-size:30px;line-height:1;background:none;border:0;color:rgba(244,235,217,.22);cursor:pointer;padding:2px;border-radius:6px}
-.star-btn.on{color:var(--star)}
-.stars .count{margin-left:8px;font-family:var(--mono);color:var(--cream-dim);font-size:13px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.types{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.type{display:grid;justify-items:center;gap:6px;padding:14px 6px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--cream-dim);font:600 13.5px/1.2 var(--body);cursor:pointer;text-align:center}
-.type .e{font-size:26px;line-height:1}
-.type[aria-checked=true]{background:var(--cream);border-color:var(--cream);color:var(--sky-ink)}
-.type:focus-visible{outline:2px solid var(--star);outline-offset:2px}
-.chip{font:600 12.5px/1 var(--mono);padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--cream-dim);cursor:pointer}
-.chip[aria-pressed=true]{background:var(--cream);border-color:var(--cream);color:var(--sky-ink)}
-.chip-group{display:grid;gap:6px}
-.chip-group .gl{font-size:11px;color:var(--cream-dim);opacity:.8}
-.add-row{display:flex;gap:8px}
-.add-row input{flex:1}
-.add-row .btn{padding:10px 14px}
-.gradeline{font-size:13px;color:var(--cream-dim)}
-.gradeline b{color:var(--cream);font-family:var(--mono)}
-.drop{position:relative;display:grid;place-items:center;text-align:center;min-height:120px;border:1.5px dashed var(--line);border-radius:12px;padding:14px;cursor:text;color:transparent;caret-color:transparent;font-size:1px;transition:border-color .15s,background .15s;background:rgba(10,24,26,.35) center/contain no-repeat;outline:none}
-.drop::before{content:attr(data-label);white-space:pre-line;font-size:13px;line-height:1.5;color:var(--cream-dim);pointer-events:none}
-.drop.has::before{content:"";}
-.drop.over,.drop:focus{border-color:var(--star);background-color:rgba(241,221,168,.06)}
+/* ---------- layout ---------- */
+.lay{display:grid;grid-template-columns:minmax(0,1fr) 480px;gap:26px;margin-top:26px;align-items:start}
+form.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 26px;box-shadow:0 14px 34px -28px rgba(30,50,55,.5);margin:0}
+.sec{padding:22px 0 24px;border-top:1px solid var(--line)}
+.sec:first-child{border-top:0}
+.sh{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.num{width:28px;height:28px;flex:none;border-radius:50%;background:var(--tealsoft);color:var(--teal2);display:grid;place-items:center;font-weight:700;font-size:13px;transition:background .2s,color .2s}
+.sec.done .num{background:var(--win);color:#fff}
+.sec.done .num b{display:none}
+.sec .num svg{display:none}
+.sec.done .num svg{display:block}
+.sh h2{margin:0;font-size:24px;line-height:1.1}
+.sh .aside{margin-left:auto;font-size:13px;color:var(--mut);text-align:right}
+.sh .aside a{color:var(--teal2);font-weight:700;text-decoration:none}
+.sh .aside a:hover{text-decoration:underline}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{display:grid;gap:7px;min-width:0}
+.fld>label,.lbl{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--mut)}
+input[type=text],input[type=number],input[type=date],textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 12px;min-height:44px;font:500 15px/1.4 var(--body);color:var(--ink)}
+input:focus,textarea:focus{outline:2px solid rgba(180,137,58,.4);outline-offset:0;border-color:var(--gold)}
+input::placeholder,textarea::placeholder{color:#A9A79E}
+textarea{resize:vertical;min-height:130px;line-height:1.55}
+.seg{display:flex;background:var(--tealsoft);border-radius:12px;padding:3px;gap:2px}
+.seg button{flex:1;border:0;background:transparent;border-radius:9px;color:var(--teal2);font-weight:700;font-size:14px;padding:9px 6px;cursor:pointer;min-height:38px;transition:background .15s}
+.seg button:hover{background:rgba(255,255,255,.5)}
+.seg button[aria-checked=true]{background:var(--card);color:var(--teal);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+#f-dir button[aria-pressed=true][data-v=Long]{background:var(--win);color:#fff;box-shadow:none}
+#f-dir button[aria-pressed=true][data-v=Short]{background:var(--loss);color:#fff;box-shadow:none}
+
+/* chart */
+.shot{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;align-items:center;border:1.5px dashed #D7C9B1;border-radius:16px;padding:12px;background:#FBF6EC;transition:border-color .15s,background .15s}
+.shot.over{border-color:var(--gold);background:#F8EED9}
+.drop{position:relative;height:118px;border-radius:11px;background:#16222A center/cover no-repeat;cursor:text;color:transparent;caret-color:transparent;font-size:1px;outline:none;overflow:hidden;display:grid;place-items:center}
+.drop::before{content:attr(data-label);white-space:pre-line;font:600 12.5px/1.45 var(--body);color:#9FB7B2;text-align:center;padding:0 12px;pointer-events:none}
+.drop.has::before{content:""}
+.drop:focus{box-shadow:0 0 0 2px var(--gold)}
 .drop > *{display:none!important}
-.shot-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-.shot-row .btn{padding:10px 14px}
-.add-chart{font-size:15px;padding:13px 22px!important}
-#shotMsg.err{color:var(--loss)}
+.shot .info b{display:block;font-size:15px}
+.shot .info p{margin:2px 0 10px;font-size:13.5px;color:var(--mut)}
+.shot .info p.err{color:var(--loss)}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);color:var(--teal);font-weight:700;font-size:13.5px;border-radius:10px;padding:8px 13px;cursor:pointer;min-height:38px;text-decoration:none}
+.btn:hover{background:#fff;border-color:#D5C8B2}
+.btn.dark{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.dark:hover{background:var(--teal2)}
 .vh{position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0}
-/* ---------- preview ---------- */
-.preview{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:grid;gap:10px}
-@media (max-width:900px){.preview{position:static}}
-.preview .cap{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--cream-dim)}
-.frame{width:100%;position:relative;overflow:hidden;border-radius:14px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+
+/* setups */
+.tgl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mut);margin:0 0 8px}
+.tgl+.types{margin-bottom:14px}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.type{position:relative;display:flex;align-items:center;gap:11px;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--teal);font:700 15px/1.2 var(--body);cursor:pointer;text-align:left;transition:border-color .15s,transform .15s,box-shadow .15s}
+.type:hover{border-color:#D5C8B2;transform:translateY(-1px);box-shadow:0 8px 18px -14px rgba(30,50,55,.5)}
+.type .e{font-size:24px;line-height:1;width:40px;height:40px;border-radius:11px;background:var(--tealsoft);display:grid;place-items:center;flex:none}
+.type[aria-checked=true]{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 12px 24px -16px rgba(33,65,74,.9)}
+.type[aria-checked=true] .e{background:rgba(255,255,255,.12)}
+.type[aria-checked=true]::after{content:"";position:absolute;top:10px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--gold2)}
+
+/* confluences */
+.cgrid{display:grid;grid-template-columns:104px minmax(0,1fr);gap:9px 14px;align-items:center}
+.cgrid .gl{font-size:13px;color:var(--mut);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font:700 13px/1 var(--body);color:var(--teal2);cursor:pointer;min-height:34px;transition:background .12s,border-color .12s}
+.chip:hover{border-color:#CDBEA5}
+.chip[aria-pressed=true]{background:var(--teal);border-color:var(--teal);color:#fff}
+.add-row{display:flex;gap:8px;margin-top:14px}
+.add-row input{flex:1;min-width:0}
+.grade{display:flex;align-items:center;gap:14px;margin-top:14px;background:#F7F0E2;border:1px solid #EFE3CB;border-radius:14px;padding:11px 15px;font-size:14px;color:var(--mut)}
+.grade .s{color:var(--gold);font-size:21px;letter-spacing:3px;white-space:nowrap;line-height:1}
+.grade .s .off{color:#DCCFB6}
+.grade b{color:var(--ink)}
+
+/* result */
+.rr{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;align-items:end;margin-bottom:18px}
+.rr-in{position:relative}
+.rr-in input{padding-right:34px;font-weight:700;font-size:17px}
+.rr-in span{position:absolute;right:13px;bottom:11px;font-weight:700;color:var(--mut)}
+.outs{display:flex;gap:6px;flex-wrap:wrap}
+.out{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:700 13.5px/1 var(--body);color:var(--mut);cursor:pointer;min-height:38px}
+.out[aria-pressed=true][data-o=win]{background:var(--winbg);border-color:#BEDCC8;color:var(--win)}
+.out[aria-pressed=true][data-o=be]{background:#F3EBD8;border-color:#E3D3B0;color:#8A6A2C}
+.out[aria-pressed=true][data-o=loss]{background:var(--lossbg);border-color:#EBCFC8;color:var(--loss)}
+.hint{font-size:12.5px;color:var(--mut);margin-top:7px}
+
+/* preview */
+.preview{position:sticky;top:24px;display:grid;gap:12px}
+.ph{display:flex;justify-content:space-between;align-items:baseline;margin:0 2px}
+.ph b{font-family:var(--display);font-size:24px;font-weight:600}
+.ph span{font-size:12.5px;color:var(--mut)}
+.frame{width:100%;position:relative;overflow:hidden;border-radius:18px;box-shadow:0 30px 60px -32px rgba(20,40,45,.8),0 0 0 1px rgba(33,65,74,.08)}
 .frame .card{position:absolute;top:0;left:0;transform-origin:0 0}
+.ready{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 12px 30px -26px rgba(30,50,55,.5)}
+.ready .rt{display:flex;align-items:center;gap:12px}
+.ready .ic{width:40px;height:40px;border-radius:12px;background:var(--tealsoft);display:grid;place-items:center;color:var(--teal2);flex:none}
+.ready.ok .ic{background:var(--winbg);color:var(--win)}
+.ready .rt div{flex:1;min-width:0}
+.ready .rt b{display:block;font-size:15px}
+.ready .rt span{font-size:13.5px;color:var(--mut)}
+.ready ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px}
+.ready li{font-size:12.5px;font-weight:700;color:var(--mut);background:#F4EEE3;border-radius:999px;padding:4px 10px}
+.ready li.ok{color:var(--win);background:var(--winbg)}
+.ready li.ok::before{content:"✓ "}
 
 /* ---------- the card (1080px wide, exported as-is) ---------- */
-.card{width:1080px;background:#2B5559;color:#F4EBD9;font-family:var(--body);overflow:hidden;
+.card{--display:"Federo","Marcellus","Georgia",serif;--body:"Figtree","Segoe UI",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  width:1080px;background:#2B5559;color:#F4EBD9;font-family:var(--body);font-size:15px;line-height:1.5;overflow:hidden;
   background-image:linear-gradient(180deg,#3C7075 0%,#2B5559 38%,#1E3E42 100%)}
 .c-head{position:relative;height:292px;background:#3E7378 center/cover no-repeat}
 .c-head::after{content:"";position:absolute;inset:auto 0 0 0;height:90px;background:linear-gradient(180deg,rgba(60,112,117,0),#3C7075)}
@@ -146,107 +182,110 @@ textarea{resize:vertical;min-height:110px}
 .c-why{background:#F4EBD9;color:#1E3E42;border-radius:14px;padding:26px 30px}
 .c-why .k{color:#3E7378}
 .c-why p{margin:0;font:500 22px/1.5 var(--body);white-space:pre-wrap;overflow-wrap:anywhere}
-.c-note{border-left:3px solid #F1DDA8;padding:4px 0 4px 22px}
-.c-note p{margin:0;font:500 20px/1.5 var(--body);color:#F4EBD9;white-space:pre-wrap;overflow-wrap:anywhere}
 .c-foot{display:flex;justify-content:space-between;align-items:center;padding:22px 44px;background:#16292C;font:600 14px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:rgba(244,235,217,.7)}
 .c-foot .brand{font:400 24px/1 var(--display);letter-spacing:.06em;text-transform:none;color:#F4EBD9}
 
 /* ---------- export sheet ---------- */
-.sheet{position:fixed;inset:0;background:rgba(8,18,20,.82);display:grid;place-items:center;padding:16px;z-index:10}
-.sheet .box{background:var(--sky-deep);border:1px solid var(--line);border-radius:18px;padding:20px;max-width:720px;width:100%;max-height:calc(100% - 32px);overflow:auto;display:grid;gap:14px}
-.sheet h2{font:400 26px/1.1 var(--display);margin:0;letter-spacing:.03em}
-.sheet img{width:100%;height:auto;border-radius:10px;display:block}
-.sheet .msg{font-size:14px;color:var(--cream-dim);margin:0}
-.sheet .msg.ok{color:var(--win)}
+.sheet{position:fixed;inset:0;background:rgba(18,32,36,.72);backdrop-filter:blur(3px);display:grid;place-items:center;padding:16px;z-index:100}
+.sheet .box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;max-width:720px;width:100%;max-height:calc(100% - 32px);overflow:auto;display:grid;gap:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.sheet h2{font-size:30px;margin:0}
+.sheet img{width:100%;height:auto;border-radius:12px;display:block;box-shadow:0 18px 40px -26px rgba(20,40,45,.8)}
+.sheet .msg{font-size:14.5px;color:var(--mut);margin:0}
+.sheet .msg.ok{color:var(--win);font-weight:700}
+.sheet .acts{display:flex;gap:8px;flex-wrap:wrap}
 .stage{position:fixed;left:-20000px;top:0}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--teal);color:#fff;font-weight:600;font-size:14px;border-radius:12px;padding:10px 16px;box-shadow:0 16px 30px -16px rgba(0,0,0,.6);z-index:120;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+
+@media (max-width:1280px){.lay{grid-template-columns:minmax(0,1fr) 400px}}
+@media (max-width:1100px){.lay{grid-template-columns:1fr}.preview{position:static;max-width:620px}.h-grid{grid-template-columns:1fr}.pull{max-width:520px}}
+@media (max-width:860px){main.tr{padding:18px 16px 96px}.hero{padding:18px 18px 22px;border-radius:20px}.hero h1{font-size:40px}.toast{bottom:90px}}
+@media (max-width:640px){form.panel{padding:2px 16px;border-radius:18px}.row2,.rr{grid-template-columns:1fr}.types{grid-template-columns:repeat(3,1fr);gap:8px}.type{flex-direction:column;text-align:center;padding:12px 6px 11px;font-size:13.5px;gap:7px}.type .e{width:38px;height:38px;font-size:22px}.cgrid{grid-template-columns:1fr;gap:4px}.cgrid .chips{margin-bottom:8px}.shot{grid-template-columns:1fr}.drop{height:150px}.h-act .hbtn{display:none}.sh .aside{display:none}.step{font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<style>html,body{margin:0}body{font-size:14px}img{max-width:100%}a.btn{text-decoration:none;display:inline-flex;align-items:center}</style>
 </head>
-<body>
+<body data-page="tools">
 
-
-<div class="app">
-  <header class="top">
-    <div>
-      <h1>Trade Review</h1>
-      <p>Fill in your trade, hit <strong>Export card</strong>, then paste the image into <strong>#trade-review</strong> on Malik's Auction House. Malik reviews it in the thread.</p>
+<main class="tr">
+  <div class="hero">
+    <div class="h-top"><div class="eyb">Tools · Trade Review</div>
+      <div class="h-act"><button class="hbtn" id="newBtn" type="button">Clear form</button><button class="gbtn" id="exportBtn" type="button">Export card</button></div></div>
+    <div class="h-grid">
+      <div>
+        <h1>Trade Review</h1>
+        <p>Turn one trade into a card for <b>#trade-review</b> on Malik's Auction House. Malik reviews it in the thread.</p>
+        <div class="steps"><div class="step"><i>1</i>Fill in your trade</div><div class="step"><i>2</i>Export the card</div><div class="step"><i>3</i>Paste it in #trade-review</div></div>
+      </div>
+      <div class="pull" id="pull">
+        <div class="k">From your journal</div>
+        <b id="pullTitle">Already logged it? Fill the form in one tap.</b>
+        <select id="jPick" aria-label="Pick a trade from your journal"></select>
+        <small id="pullNote">Pulls the instrument, setup, confluences, R and your notes. Your screenshot too, if you added one.</small>
+      </div>
     </div>
-    <div class="actions">
-      <button class="btn" id="newBtn" type="button">Clear form</button>
-      <button class="btn primary" id="exportBtn" type="button">Export card</button>
-    </div>
-  </header>
+  </div>
 
-  <div class="layout">
-    <form id="form" autocomplete="off">
-      <fieldset>
-        <legend>Your trade</legend>
-        <div class="field"><label for="f-member">Your Discord name</label><input type="text" id="f-member" placeholder="@username"></div>
-        <div class="field"><label>Instrument</label>
-          <div class="seg inst" id="f-inst" role="radiogroup" aria-label="Instrument">
-            <button type="button" data-v="NQ">NQ</button><button type="button" data-v="ES">ES</button><button type="button" data-v="GC">GC</button><button type="button" data-v="CL">CL</button>
-          </div>
+  <div class="lay">
+    <form id="form" class="panel" autocomplete="off">
+      <section class="sec" id="s1">
+        <div class="sh"><span class="num"><b>1</b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><h2>The trade</h2></div>
+        <div class="row2" style="margin-bottom:14px">
+          <div class="fld"><label for="f-member">Your Discord name</label><input type="text" id="f-member" placeholder="@username"></div>
+          <div class="fld"><label for="f-date">Date</label><input type="date" id="f-date"></div>
         </div>
         <div class="row2">
-          <div class="field"><label for="f-date">Date</label><input type="date" id="f-date"></div>
-          <div class="field"><label>Direction</label>
-            <div class="seg" id="f-dir" role="group" aria-label="Direction">
-              <button type="button" data-v="Long" aria-pressed="true">Long</button>
-              <button type="button" data-v="Short" aria-pressed="false">Short</button>
-            </div>
+          <div class="fld"><span class="lbl">Instrument</span>
+            <div class="seg inst" id="f-inst" role="radiogroup" aria-label="Instrument"><button type="button" data-v="NQ">NQ</button><button type="button" data-v="ES">ES</button><button type="button" data-v="GC">GC</button><button type="button" data-v="CL">CL</button></div></div>
+          <div class="fld"><span class="lbl">Direction</span>
+            <div class="seg" id="f-dir" role="group" aria-label="Direction"><button type="button" data-v="Long" aria-pressed="true">Long</button><button type="button" data-v="Short" aria-pressed="false">Short</button></div></div>
+        </div>
+      </section>
+
+      <section class="sec" id="s2">
+        <div class="sh"><span class="num"><b>2</b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><h2>Chart</h2><span class="aside">Drop, paste or pick a screenshot</span></div>
+        <div class="shot" id="shotBox">
+          <div class="drop" id="drop" tabindex="0" contenteditable="true" role="textbox" aria-label="Paste your chart screenshot here" spellcheck="false"></div>
+          <div class="info">
+            <b id="shotName">No chart yet</b>
+            <p id="shotMsg" aria-live="polite">Click the box and paste (Ctrl+V / ⌘V), or drag an image in.</p>
+            <button type="button" class="btn dark" id="pickBtn">＋ Add chart</button>
+            <button type="button" class="btn" id="rmShot" hidden>Remove</button>
           </div>
         </div>
-        
-      </fieldset>
-
-      <fieldset>
-        <legend>Chart</legend>
-        <div class="shot-row">
-          <button type="button" class="btn primary add-chart" id="pickBtn">＋ Add chart</button>
-          <button type="button" class="btn" id="rmShot" hidden>Remove</button>
-          <span class="hint" id="shotMsg" aria-live="polite"></span>
-        </div>
-        <div class="drop" id="drop" tabindex="0" contenteditable="true" role="textbox" aria-label="Paste your chart screenshot here" spellcheck="false"></div>
         <input type="file" id="f-img" accept="image/*" class="vh" tabindex="-1" aria-hidden="true">
-      </fieldset>
+      </section>
 
-      <fieldset>
-        <legend>Setup type</legend>
-        <div class="types" id="f-type" role="radiogroup" aria-label="Setup type"></div>
-      </fieldset>
+      <section class="sec" id="s3">
+        <div class="sh"><span class="num"><b>3</b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><h2>Setup</h2><span class="aside"><a id="libLink" href="/setup-library.html">See real examples →</a></span></div>
+        <div class="tgl">Core setups</div>
+        <div class="types" id="f-type-core" role="radiogroup" aria-label="Core setups"></div>
+        <div class="tgl">Advanced setups</div>
+        <div class="types" id="f-type-adv" role="radiogroup" aria-label="Advanced setups"></div>
+      </section>
 
-      <fieldset>
-        <legend>How good was the setup?</legend>
-        <div class="stars" id="f-stars" role="radiogroup" aria-label="Setup rating out of 4"></div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Confluences used</legend>
-        <div id="f-conf" class="chip-group"></div>
+      <section class="sec" id="s4">
+        <div class="sh"><span class="num"><b>4</b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><h2>Confluences</h2><span class="aside">Tick every level the trade came from</span></div>
+        <div id="f-conf" class="cgrid"></div>
         <div class="add-row">
           <input type="text" id="f-custom" placeholder="Used something else? Type it here" aria-label="Add a custom confluence">
           <button type="button" class="btn" id="addConf">Add</button>
         </div>
-        <div class="gradeline" id="gradeLine"></div>
-      </fieldset>
+        <div class="grade"><span class="s" id="gradeStars"></span><span id="gradeLine"></span></div>
+      </section>
 
-      <fieldset>
-        <legend>Result</legend>
-        <div class="row2">
-          <div class="field"><label for="f-rr">R:R achieved</label><input type="number" id="f-rr" step="0.1" placeholder="2.5"></div>
-          <div class="field" style="align-content:end"><span class="hint">Use a minus for a loss (−1 = full stop). 0 = breakeven.</span></div>
+      <section class="sec" id="s5">
+        <div class="sh"><span class="num"><b>5</b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><h2>Result &amp; write-up</h2></div>
+        <div class="rr">
+          <div class="fld"><label for="f-rr">R:R achieved</label><div class="rr-in"><input type="number" id="f-rr" step="0.1" placeholder="1"><span>R</span></div></div>
+          <div><div class="outs" id="outs"><button type="button" class="out" data-o="win" aria-pressed="false">Win</button><button type="button" class="out" data-o="be" aria-pressed="false">Breakeven</button><button type="button" class="out" data-o="loss" aria-pressed="false">Loss</button></div>
+          <div class="hint">Use a minus for a loss (−1 = full stop). 0 = breakeven.</div></div>
         </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Write-up</legend>
-        <div class="field"><label for="f-why">Why did you take it?</label><textarea id="f-why" rows="5" placeholder="Where price was, which levels lined up, what you waited for before entering, where your stop and target were."></textarea></div>
-      </fieldset>
+        <div class="fld"><label for="f-why">Why did you take it?</label><textarea id="f-why" rows="5" placeholder="Where price was, which levels lined up, what you waited for before entering, where your stop and target were."></textarea></div>
+      </section>
     </form>
 
-    <section class="preview" aria-label="Card preview">
-      <div class="cap"><span>Your card (example filled in until you clear it)</span><span>1080 px wide · exports as PNG</span></div>
+    <aside class="preview" aria-label="Card preview">
+      <div class="ph"><b>Your card</b><span id="capNote">Example filled in until you clear it</span></div>
       <div class="frame" id="frame">
         <div class="card" id="card">
           <div class="c-head" id="c-head">
@@ -272,23 +311,30 @@ textarea{resize:vertical;min-height:110px}
           <div class="c-foot"><span>Malik's Auction House · #trade-review</span><span class="brand">MalikTrades</span></div>
         </div>
       </div>
-    </section>
+      <div class="ready" id="ready">
+        <div class="rt"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v10H9l-4 4z"/></svg></span>
+          <div><b id="readyT">Ready to post</b><span id="readyS">Export, then paste it into #trade-review.</span></div>
+          <button class="gbtn" id="exportBtn2" type="button">Export card</button></div>
+        <ul id="readyList"></ul>
+      </div>
+    </aside>
   </div>
-</div>
+</main>
 
 <div class="sheet" id="sheet" hidden>
   <div class="box" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <h2 id="sheetTitle">Card ready</h2>
     <p class="msg" id="sheetMsg">Rendering…</p>
     <img id="sheetImg" alt="Exported trade review card" hidden>
-    <div class="actions">
-      <button class="btn primary" id="copyBtn" type="button" disabled>Copy image</button>
+    <div class="acts">
+      <button class="gbtn" id="copyBtn" type="button" disabled>Copy image</button>
       <a class="btn" id="dlBtn" download="trade-review.png" hidden>Download PNG</a>
       <button class="btn" id="closeBtn" type="button">Close</button>
     </div>
   </div>
 </div>
 <div class="stage" id="stage" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
@@ -309,6 +355,7 @@ const store = {
   set(k,v){ try{ localStorage.setItem('mt-review-'+k, JSON.stringify(v)); }catch(e){} }
 };
 const today = () => { const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+let toastT; function toast(t){ const el=$('toast'); el.textContent=t; el.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('on'),2600); }
 
 /* example chart so the card opens in a working state */
 function sampleChart(){
@@ -339,40 +386,32 @@ function sampleChart(){
 }
 
 const defaults = () => ({
-  member:'@example_member', type:'The Snap', inst:'NQ', date:today(), dir:'Long', stars:4,
+  member:'@example_member', type:'The Snap', inst:'NQ', date:today(), dir:'Long',
   conf:['ONVAL','VWAP Band','HVN'], custom:[], rr:2.4,
   why:"Price rotated down into the overnight VAL, which lined up with the lower VWAP band and an HVN from the prior session. Waited for a rejection candle at the level and entered long with the stop below the HVN. Target was VWAP."
 });
-let state = Object.assign(defaults(), store.get('draft')||{});
-state.stars = Math.min(state.stars||0, 4);
 const hadDraft = !!store.get('draft');
+let state = Object.assign(defaults(), store.get('draft')||{});
 let shot = hadDraft ? (store.get('shot')||null) : sampleChart();
+let shotLabel = hadDraft ? (shot ? 'Chart added' : '') : 'Example chart';
 let lastShot = null;
+const starsOf = () => Math.min(4, state.conf.length);
 
-/* ---------- build form controls ---------- */
-const TYPES=[["The Snap","🫰"],["The Flip","🔄"],["The Magnet","🧲"]];
-const typeEl=$('f-type');
-TYPES.forEach(([name,e])=>{
+/* ---------- setups ---------- */
+const TYPES=[["The Snap","🫰","snap",0],["The Flip","🔄","flip",0],["The Magnet","🧲","magnet",0],["The Anchor","⚓","anchor",1],["The Wall","🧱","wall",1],["The Whip","⚡","whip",1]];
+TYPES.forEach(([name,e,id,adv])=>{
   const b=document.createElement('button'); b.type='button'; b.className='type'; b.dataset.v=name;
   b.setAttribute('role','radio'); b.innerHTML='<span class="e">'+e+'</span><span>'+name+'</span>';
   b.onclick=()=>{ state.type = state.type===name ? '' : name; render(); };
-  typeEl.appendChild(b);
+  $(adv?'f-type-adv':'f-type-core').appendChild(b);
 });
-const starsEl=$('f-stars');
-for(let i=1;i<=4;i++){
-  const b=document.createElement('button'); b.type='button'; b.className='star-btn'; b.textContent='★';
-  b.setAttribute('role','radio'); b.setAttribute('aria-label',i+' star'+(i>1?'s':'')); b.dataset.v=i;
-  b.onclick=()=>{ state.stars = state.stars===i ? 0 : i; render(); };
-  starsEl.appendChild(b);
-}
-const starCount=document.createElement('span'); starCount.className='count'; starsEl.appendChild(starCount);
 
+/* ---------- confluences ---------- */
 function buildConf(){
   const wrap=$('f-conf'); wrap.innerHTML='';
-  const groups = GROUPS.concat(state.custom.length?[["Custom",state.custom]]:[]);
+  const groups = GROUPS.concat(state.custom.length?[["Your own",state.custom]]:[]);
   groups.forEach(([name,list])=>{
-    const g=document.createElement('div'); g.className='chip-group';
-    g.innerHTML='<div class="gl">'+name+'</div>';
+    const gl=document.createElement('div'); gl.className='gl'; gl.textContent=name; wrap.appendChild(gl);
     const row=document.createElement('div'); row.className='chips';
     list.forEach(c=>{
       const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=c;
@@ -380,7 +419,7 @@ function buildConf(){
       b.onclick=()=>{ state.conf = state.conf.includes(c) ? state.conf.filter(x=>x!==c) : state.conf.concat(c); b.setAttribute('aria-pressed',state.conf.includes(c)); render(); };
       row.appendChild(b);
     });
-    g.appendChild(row); wrap.appendChild(g);
+    wrap.appendChild(row);
   });
 }
 function addCustom(){
@@ -395,6 +434,11 @@ $('f-custom').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefa
 
 document.querySelectorAll('#f-inst button').forEach(b=>b.onclick=()=>{ state.inst=b.dataset.v; render(); });
 document.querySelectorAll('#f-dir button').forEach(b=>b.onclick=()=>{ state.dir=b.dataset.v; render(); });
+document.querySelectorAll('#outs .out').forEach(b=>b.onclick=()=>{
+  const a = (typeof state.rr==='number' && !isNaN(state.rr) && state.rr!==0) ? Math.abs(state.rr) : 1;
+  state.rr = b.dataset.o==='win' ? a : b.dataset.o==='loss' ? -a : 0;
+  $('f-rr').value = state.rr; render();
+});
 
 const bind=(id,key,num)=>{ const el=$(id); el.addEventListener('input',()=>{ state[key]= num ? (el.value===''?null:parseFloat(el.value)) : el.value; render(); }); };
 bind('f-member','member'); bind('f-date','date');
@@ -402,23 +446,24 @@ bind('f-rr','rr',true); bind('f-why','why');
 $('form').addEventListener('submit',e=>e.preventDefault());
 
 function fillForm(){
-  $('f-member').value=state.member||''; 
+  $('f-member').value=state.member||'';
   $('f-date').value=state.date||''; $('f-rr').value=state.rr??''; $('f-why').value=state.why||'';
   buildConf();
 }
 
 /* ---------- screenshot input ---------- */
-const drop=$('drop'), fileIn=$('f-img'), shotMsg=$('shotMsg');
-drop.dataset.label='Or click here and paste a screenshot (Ctrl+V / ⌘V)\nor drag an image in';
-function say(t,err){ shotMsg.textContent=t; shotMsg.className='hint'+(err?' err':''); }
-function useDataUrl(url){
+const drop=$('drop'), fileIn=$('f-img'), shotMsg=$('shotMsg'), shotBox=$('shotBox');
+drop.dataset.label='Click, then paste\nor drop an image here';
+const MSG0='Click the box and paste (Ctrl+V / ⌘V), or drag an image in.';
+function say(t,err){ shotMsg.textContent=t||MSG0; shotMsg.className=err?'err':''; }
+function useDataUrl(url,label){
   const im=new Image();
   im.onload=()=>{
     const max=1800, k=Math.min(1, max/im.naturalWidth);
     if(k<1){ const c=document.createElement('canvas'); c.width=Math.round(im.naturalWidth*k); c.height=Math.round(im.naturalHeight*k);
       c.getContext('2d').drawImage(im,0,0,c.width,c.height); shot=c.toDataURL('image/jpeg',.9); }
     else shot=url;
-    say('Screenshot added.'); render();
+    shotLabel=label||'Chart added'; say('Looks good. It shows on your card.'); render();
   };
   im.onerror=()=>say("That image couldn't be read. Try a PNG or JPG.",true);
   im.src=url;
@@ -427,19 +472,19 @@ function loadFile(file){
   if(!file){ return; }
   if(file.type && !file.type.startsWith('image/')){ say('That file is not an image. Use a PNG or JPG screenshot.',true); return; }
   const fr=new FileReader();
-  fr.onload=()=>useDataUrl(fr.result);
+  fr.onload=()=>useDataUrl(fr.result, file.name && file.name!=='image.png' ? file.name : 'Chart added');
   fr.onerror=()=>say("That file couldn't be opened. Try saving it as PNG first.",true);
   fr.readAsDataURL(file);
 }
 $('pickBtn').onclick=()=>{ fileIn.value=''; fileIn.click(); };
 fileIn.addEventListener('change',()=>loadFile(fileIn.files[0]));
-$('rmShot').onclick=()=>{ shot=null; say(''); render(); };
+$('rmShot').onclick=()=>{ shot=null; shotLabel=''; say(''); render(); };
 drop.addEventListener('click',()=>drop.focus());
 drop.addEventListener('beforeinput',e=>{ if(e.inputType!=='insertFromPaste') e.preventDefault(); });
 drop.addEventListener('input',()=>{ drop.innerHTML=''; });
-['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add('over');}));
-['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.remove('over');}));
-drop.addEventListener('drop',e=>{ const f=e.dataTransfer&&e.dataTransfer.files[0]; if(f) loadFile(f); else say('Drop an image file from your computer.',true); });
+['dragenter','dragover'].forEach(t=>shotBox.addEventListener(t,e=>{e.preventDefault();shotBox.classList.add('over');}));
+['dragleave','drop'].forEach(t=>shotBox.addEventListener(t,e=>{e.preventDefault();shotBox.classList.remove('over');}));
+shotBox.addEventListener('drop',e=>{ const f=e.dataTransfer&&e.dataTransfer.files[0]; if(f) loadFile(f); else say('Drop an image file from your computer.',true); });
 function handlePaste(e){
   const cd=e.clipboardData; if(!cd) return false;
   const items=cd.items||[];
@@ -451,24 +496,98 @@ function handlePaste(e){
   return false;
 }
 drop.addEventListener('paste',e=>{ if(!handlePaste(e)){ e.preventDefault(); say('No image on your clipboard. Take the screenshot first, then paste.',true); } });
-document.addEventListener('paste',e=>{ if(e.target===drop) return; const tag=(e.target.tagName||'').toLowerCase(); if(tag==='input'||tag==='textarea') { handlePaste(e); return; } handlePaste(e); });
+document.addEventListener('paste',e=>{ if(e.target===drop) return; handlePaste(e); });
+
+/* ---------- from the journal ---------- */
+const JSET = { snap:"The Snap", flip:"The Flip", magnet:"The Magnet", anchor:"The Anchor", wall:"The Wall", whip:"The Whip" };
+const PV = { NQ:20, MNQ:2, ES:50, MES:5, GC:100, MGC:10, CL:1000, MCL:100, OTHER:1 };
+const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+let jTrades=[], jMember='';
+function jR(t){
+  let rk = (typeof t.risk==='number' && t.risk>0) ? t.risk : (t.sl && t.qty ? t.sl*(PV[t.sym]??1)*t.qty : null);
+  return (rk && typeof t.pnl==='number') ? t.pnl/rk : null;
+}
+const fmtR = r => r===null ? '' : (r>0?'+':r<0?'−':'')+Math.abs(r).toFixed(1)+'R';
+function baseSym(s){ s=String(s||'').toUpperCase(); if(['MNQ','MES','MGC','MCL'].includes(s)) s=s.slice(1); return ['NQ','ES','GC','CL'].includes(s)?s:null; }
+function loadJournal(){
+  let j=null; try{ j=JSON.parse(localStorage.getItem('maliktrades.journal.v1')); }catch(e){}
+  jTrades = (j && Array.isArray(j.trades)) ? j.trades.slice() : [];
+  jMember = (j && j.member) || '';
+  jTrades.sort((a,b)=> (b.date+(b.time||'')).localeCompare(a.date+(a.time||'')) || (b.seq||0)-(a.seq||0));
+  jTrades = jTrades.slice(0,40);
+  const sel=$('jPick');
+  if(!jTrades.length){
+    $('pullTitle').textContent='Log trades in your journal, then fill this in one tap.';
+    sel.hidden=true;
+    $('pullNote').innerHTML='Your journal trades show up here, with the setup, levels, R and screenshot ready to go. <a href="/MalikTradesJournal/#log">Open the Journal →</a>';
+    return;
+  }
+  sel.innerHTML='<option value="">Pick a trade you logged…</option>'+jTrades.map((t,i)=>{
+    const [y,m,d]=String(t.date).split('-').map(Number); const dt=new Date(y,m-1,d);
+    const lab=[DOW[dt.getDay()]+' '+d+' '+MON[m-1], t.sym, t.setup&&JSET[t.setup]?JSET[t.setup]:(t.dir==='short'?'Short':'Long'), fmtR(jR(t))].filter(Boolean).join(' · ');
+    return '<option value="'+i+'">'+esc(lab)+'</option>';
+  }).join('');
+}
+function shotFromIdb(id){
+  return new Promise(res=>{
+    let r; try{ r=indexedDB.open('maliktrades.shots',1); }catch(e){ return res(null); }
+    r.onupgradeneeded=()=>{ try{ r.result.createObjectStore('shots'); }catch(e){} };
+    r.onerror=r.onblocked=()=>res(null);
+    r.onsuccess=()=>{ try{ const q=r.result.transaction('shots','readonly').objectStore('shots').get(id); q.onsuccess=()=>res(q.result||null); q.onerror=()=>res(null); }catch(e){ res(null); } };
+  });
+}
+$('jPick').addEventListener('change', async e=>{
+  const t=jTrades[+e.target.value]; if(!t) return;
+  const known=GROUPS.flatMap(g=>g[1]);
+  const conf=(t.conf||[]).map(c=>c==='VWAP/VWAP Band'?'VWAP':c);
+  conf.forEach(c=>{ if(!known.includes(c) && !state.custom.includes(c)) state.custom.push(c); });
+  const r=jR(t);
+  Object.assign(state,{
+    member: (!state.member||state.member.startsWith('@example')) ? (jMember? (jMember.startsWith('@')?jMember:'@'+jMember) : '') : state.member,
+    inst: baseSym(t.sym)||state.inst, date:t.date||today(), dir: t.dir==='short'?'Short':'Long',
+    type: JSET[t.setup]||'', conf, rr: r===null?null:Math.round(r*10)/10, why: t.notes||''
+  });
+  shot=null; shotLabel=''; say('');
+  const sid=(t.shots||[])[0];
+  if(sid){ const url=await shotFromIdb(sid); if(url) useDataUrl(url,'Screenshot from your journal'); }
+  fillForm(); render(); $('capNote').textContent='Filled from your journal';
+  toast(r===null ? 'Filled in. Add your R, the trade had no stop size.' : 'Filled in from your journal.');
+});
 
 /* ---------- render ---------- */
-function fmtDate(s){ if(!s) return '—'; const [y,m,d]=s.split('-'); const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]; return d+' '+M+' '+y; }
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fmtDate(s){ if(!s) return '—'; const [y,m,d]=s.split('-'); const M=MON[+m-1]; return d+' '+M+' '+y; }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+const has = v => typeof v==='string' && v.trim()!=='';
+const rrOk = () => typeof state.rr==='number' && !isNaN(state.rr);
 
 function render(){
-  // form state
-  starsEl.querySelectorAll('.star-btn').forEach(b=>{ const on=+b.dataset.v<=state.stars; b.classList.toggle('on',on); b.setAttribute('aria-checked', +b.dataset.v===state.stars); });
-  starCount.textContent = state.stars ? state.stars+' / 4' : 'not rated';
-  typeEl.querySelectorAll('.type').forEach(b=>b.setAttribute('aria-checked', b.dataset.v===state.type));
+  const stars=starsOf();
+  document.querySelectorAll('.type').forEach(b=>b.setAttribute('aria-checked', b.dataset.v===state.type));
   const t=TYPES.find(x=>x[0]===state.type);
   $('c-type').innerHTML = t ? esc(t[0])+'<span class="e">'+t[1]+'</span>' : '—';
+  $('libLink').href = '/setup-library.html'+(t?'?setup='+t[2]:'');
+  $('libLink').textContent = t ? 'See real '+t[0].replace('The ','')+' trades →' : 'See real examples →';
   document.querySelectorAll('#f-inst button').forEach(b=>b.setAttribute('aria-checked', b.dataset.v===state.inst));
   document.querySelectorAll('#f-dir button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.v===state.dir));
   const n=state.conf.length;
-  $('gradeLine').textContent = 'Tick every level your trade was taken from.';
-  drop.style.backgroundImage = shot ? 'url("'+shot+'")' : 'none'; drop.classList.toggle('has',!!shot); $('rmShot').hidden=!shot; $('pickBtn').textContent = shot ? 'Change chart' : '＋ Add chart';
+  let gs=''; for(let i=1;i<=4;i++) gs += i<=stars ? '★' : '<span class="off">★</span>';
+  $('gradeStars').innerHTML=gs;
+  $('gradeLine').innerHTML = n ? '<b>'+stars+' out of 4.</b> One star per confluence, so the rating comes from your levels, not your mood.' : 'Tick your levels and the setup rates itself, one star per confluence.';
+  drop.style.backgroundImage = shot ? 'url("'+shot+'")' : 'none'; drop.classList.toggle('has',!!shot);
+  $('rmShot').hidden=!shot; $('pickBtn').textContent = shot ? 'Change chart' : '＋ Add chart';
+  $('shotName').textContent = shot ? (shotLabel||'Chart added') : 'No chart yet';
+  const o = !rrOk() ? '' : state.rr>0 ? 'win' : state.rr<0 ? 'loss' : 'be';
+  document.querySelectorAll('#outs .out').forEach(b=>b.setAttribute('aria-pressed', b.dataset.o===o));
+
+  // section ticks
+  const done = { s1: has(state.member)&&!!state.date, s2: !!shot, s3: !!state.type, s4: n>0, s5: rrOk()&&has(state.why) };
+  Object.entries(done).forEach(([id,ok])=>$(id).classList.toggle('done',ok));
+  const NAMES={s1:'Your details',s2:'Chart',s3:'Setup',s4:'Confluences',s5:'Result & write-up'};
+  const left=Object.keys(done).filter(k=>!done[k]);
+  $('ready').classList.toggle('ok',!left.length);
+  $('readyT').textContent = left.length ? left.length+' thing'+(left.length>1?'s':'')+' left' : 'Ready to post';
+  $('readyS').textContent = left.length ? 'You can still export, but Malik can give better feedback with everything filled in.' : 'Export, then paste it into #trade-review with one line on what you want feedback on.';
+  $('readyList').innerHTML = Object.keys(done).map(k=>'<li class="'+(done[k]?'ok':'')+'">'+NAMES[k]+'</li>').join('');
 
   // card
   $('c-member').textContent = state.member||'—';
@@ -476,12 +595,10 @@ function render(){
   $('c-dir').innerHTML = '<span class="dir '+state.dir+'">'+state.dir+'</span>';
   $('c-date').textContent = fmtDate(state.date);
   $('c-shot').innerHTML = shot ? '<img alt="" src="'+shot+'">' : '<div class="empty">Paste a chart screenshot</div>';
-  let st=''; for(let i=1;i<=4;i++) st += i<=state.stars ? '★' : '<span class="off">★</span>';
-  $('c-stars').innerHTML = st;
-  $('c-starsub').textContent = state.stars ? state.stars+' out of 4' : 'Not rated';
-  const rr=state.rr;
-  const rrEl=$('c-rr');
-  if(rr===null||rr===undefined||isNaN(rr)){ rrEl.textContent='—'; rrEl.className='c-big'; $('c-out').textContent=''; }
+  $('c-stars').innerHTML = gs;
+  $('c-starsub').textContent = stars ? stars+' out of 4' : 'Not rated';
+  const rr=state.rr, rrEl=$('c-rr');
+  if(!rrOk()){ rrEl.textContent='—'; rrEl.className='c-big'; $('c-out').textContent=''; }
   else{
     const cls = rr>0?'win':rr<0?'loss':'be';
     rrEl.textContent = (rr>0?'+':rr<0?'−':'')+Math.abs(rr).toFixed(Math.abs(rr)%1?1:0)+'R';
@@ -491,6 +608,7 @@ function render(){
   $('c-chips').innerHTML = n ? state.conf.map(c=>'<span class="c-chip">'+esc(c)+'</span>').join('') : '<span class="c-none">None selected</span>';
   $('c-why').textContent = state.why || '—';
 
+  state.stars = stars;
   store.set('draft', state);
   if(shot!==lastShot){ lastShot=shot; store.set('shot', shot); }
   fit();
@@ -504,14 +622,14 @@ card.addEventListener('load',fit,true);
 
 /* ---------- new review ---------- */
 $('newBtn').onclick=()=>{
-  state = { member:state.member.startsWith('@example')?'':state.member, inst:state.inst, date:today(), dir:'Long', type:'', stars:0, conf:[], custom:state.custom, rr:null, why:'' };
-  shot=null; fileIn.value=''; say('');
-  fillForm(); render(); document.querySelector('.cap span').textContent='Your card'; $('f-member').focus();
+  state = { member:(state.member||'').startsWith('@example')?'':state.member, inst:state.inst, date:today(), dir:'Long', type:'', conf:[], custom:state.custom, rr:null, why:'' };
+  shot=null; shotLabel=''; fileIn.value=''; say(''); $('jPick').value='';
+  fillForm(); render(); $('capNote').textContent='1080 px · exports as PNG'; $('f-member').focus();
 };
 
 /* ---------- export ---------- */
 let blob=null;
-$('exportBtn').onclick=async ()=>{
+async function doExport(){
   const sheet=$('sheet'), msg=$('sheetMsg'), img=$('sheetImg'), copy=$('copyBtn');
   sheet.hidden=false; img.hidden=true; copy.disabled=true; msg.className='msg'; msg.textContent='Rendering…'; blob=null;
   try{
@@ -528,7 +646,8 @@ $('exportBtn').onclick=async ()=>{
   }catch(err){
     msg.textContent='The card could not be rendered: '+(err&&err.message||err)+'. Try a smaller screenshot.';
   }
-};
+}
+$('exportBtn').onclick=doExport; $('exportBtn2').onclick=doExport;
 $('copyBtn').onclick=async ()=>{
   const msg=$('sheetMsg');
   try{
@@ -543,12 +662,12 @@ $('closeBtn').onclick=closeSheet;
 $('sheet').addEventListener('click',e=>{ if(e.target.id==='sheet') closeSheet(); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheet(); });
 
-fillForm(); render();
-if(hadDraft) document.querySelector('.cap span').textContent='Your card';
+loadJournal(); fillForm(); render();
+if(hadDraft) $('capNote').textContent='1080 px · exports as PNG';
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+window.addEventListener('pageshow',loadJournal);
 })();
 </script>
-
-<script src="/mt-nav.js" defer></script>
+<script src="/mt-shell.js"></script>
 </body>
 </html>
